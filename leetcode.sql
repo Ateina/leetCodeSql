@@ -27,5 +27,13 @@ GROUP BY v1.customer_id
 SELECT w1.id as Id
 FROM Weather AS w1
 INNER JOIN Weather AS w2
-ON w1.id - w2.id = 1
+ON DATEDIFF(w1.recordDate, w2.recordDate) = 1
 WHERE w1.temperature > w2.temperature
+
+-- 577. Employee Bonus
+-- https://leetcode.com/problems/employee-bonus/description/?envType=study-plan-v2&envId=top-sql-50
+SELECT e.name, b.bonus 
+FROM Employee AS e
+LEFT JOIN Bonus AS b
+ON e.empId = b.empId 
+WHERE b.bonus < 1000 OR b.bonus IS NULL
