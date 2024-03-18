@@ -21,3 +21,11 @@ LEFT JOIN Transactions AS t1
 ON v1.visit_id = t1.visit_id
 WHERE t1.visit_id IS NULL 
 GROUP BY v1.customer_id
+
+-- 197. Rising Temperature
+-- https://leetcode.com/problems/rising-temperature/description/?envType=study-plan-v2&envId=top-sql-50
+SELECT w1.id as Id
+FROM Weather AS w1
+INNER JOIN Weather AS w2
+ON w1.id - w2.id = 1
+WHERE w1.temperature > w2.temperature
